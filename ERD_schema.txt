@@ -20,7 +20,7 @@ dept_name varchar
 
 dept_emp
 -
-emp_no int PK FK - employees.emp_no
+emp_no integer PK FK - employees.emp_no
 dept_no varchar PK FK >-< departments.dept_no
 
 dept_manager
