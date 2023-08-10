@@ -4,7 +4,7 @@ SELECT
 	e.last_name,
 	e.first_name,
 	e.sex,
-	s.salary
+	'$' || s.salary
 FROM employees AS e
 JOIN salaries AS s ON s.emp_no = e.emp_no;
 
