@@ -1,21 +1,15 @@
 -- drop tables (in reverse order, to avoid errors) if they already exist
-drop table if exists salaries;
-drop table if exists dept_manager;
-drop table if exists dept_emp;
-drop table if exists departments;
-drop table if exists employees;
-drop table if exists title;
-
--- Adapted from QuickDBD: https://www.quickdatabasediagrams.com/
--- Link to schema: https://app.quickdatabasediagrams.com/#/d/YmTQEe
+DROP TABLE IF EXISTS salaries;
+DROP TABLE IF EXISTS dept_manager;
+DROP TABLE IF EXISTS dept_emp;
+DROP TABLE IF EXISTS departments;
+DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS title;
 
 -- create title table, import data
 CREATE TABLE title (
-    title_id varchar   NOT NULL,
-    title varchar   NOT NULL,
-    CONSTRAINT pk_title PRIMARY KEY (
-        title_id
-     )
+    title_id varchar PRIMARY KEY,
+    title varchar   NOT NULL
 );
 COPY title (title_id, title)
 FROM 'C:\Users\johbr\Data-Analyst\Projects\9-sql-challenge\Resources\titles.csv'
@@ -24,16 +18,13 @@ CSV HEADER;
 
 -- create employees table, import data
 CREATE TABLE employees (
-    emp_no integer   NOT NULL,
+    emp_no integer PRIMARY KEY,
     emp_title_id varchar   NOT NULL,
     birth_date timestamp   NOT NULL,
     first_name varchar   NOT NULL,
     last_name varchar   NOT NULL,
     sex varchar   NOT NULL,
     hire_date timestamp   NOT NULL,
-    CONSTRAINT pk_employees PRIMARY KEY (
-        emp_no
-     ),
 	CONSTRAINT fk_employees_emp_title_id FOREIGN KEY(emp_title_id)
 		REFERENCES title (title_id)
 );
@@ -44,11 +35,8 @@ CSV HEADER;
 
 -- create departments table, import data
 CREATE TABLE departments (
-    dept_no varchar   NOT NULL,
-    dept_name varchar   NOT NULL,
-    CONSTRAINT pk_departments PRIMARY KEY (
-        dept_no
-     )
+    dept_no varchar PRIMARY KEY,
+    dept_name varchar   NOT NULL
 );
 COPY departments (dept_no, dept_name)
 FROM 'C:\Users\johbr\Data-Analyst\Projects\9-sql-challenge\Resources\departments.csv'
@@ -56,12 +44,11 @@ DELIMITER ','
 CSV HEADER;
 
 -- create dept_emp table, import data
+-- note the composite primary key
 CREATE TABLE dept_emp (
-    emp_no integer  NOT NULL,
+    emp_no integer   NOT NULL,
     dept_no varchar   NOT NULL,
-    CONSTRAINT pk_dept_emp PRIMARY KEY (
-        emp_no,dept_no
-     ),
+	CONSTRAINT pk_dept_emp PRIMARY KEY (emp_no,dept_no),
 	CONSTRAINT fk_dept_emp_emp_no FOREIGN KEY(emp_no)
 		REFERENCES employees (emp_no),
 	CONSTRAINT fk_dept_emp_dept_no FOREIGN KEY(dept_no)
@@ -75,10 +62,7 @@ CSV HEADER;
 -- create dept_manager table, import data
 CREATE TABLE dept_manager (
     dept_no varchar   NOT NULL,
-    emp_no integer   NOT NULL,
-    CONSTRAINT pk_dept_manager PRIMARY KEY (
-        emp_no
-     ),
+    emp_no integer PRIMARY KEY,
 	CONSTRAINT fk_dept_manager_dept_no FOREIGN KEY(dept_no)
 		REFERENCES departments (dept_no),
 	CONSTRAINT fk_dept_manager_emp_no FOREIGN KEY(emp_no)
@@ -91,11 +75,8 @@ CSV HEADER;
 
 -- create salaries table, import data
 CREATE TABLE salaries (
-    emp_no integer   NOT NULL,
+    emp_no integer PRIMARY KEY,
     salary numeric   NOT NULL,
-    CONSTRAINT pk_salaries PRIMARY KEY (
-        emp_no
-     ),
 	CONSTRAINT fk_salaries_emp_no FOREIGN KEY(emp_no)
 		REFERENCES employees (emp_no)
 );
