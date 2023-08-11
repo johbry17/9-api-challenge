@@ -6,7 +6,7 @@ Development on this project has stopped.
 
 This project simulates creating an RDBMS (relational database management system) from six csv files containing data from the fictional Pewlett Hackard company, to analyze data on past employees. 
 
-Data modelling is accomplished using app.quickdatabasediagrams.com to create an ERD (entity relationship diagram). 'create_tables_schema.sql' contains the code to create all of the tables for the RDBMS. 'queries_for_analysis.sql' contains code for all of the queries.
+Data modelling is accomplished using app.quickdatabasediagrams.com to create an ERD (entity relationship diagram). 'schema.sql' contains the code to create all of the tables for the RDBMS. 'queries.sql' contains code for all of the queries.
 
 A jupyter notebook, 'analysis.ipynb', contains all of the queries. Some are limited to the first ten results to conserve computer memory.
 
