@@ -4,7 +4,7 @@ Schematic for creating relational database management system (RDBMS). Links vari
 Follows pattern established in root repo's 'ERD_schema.txt'.
 
 To import data, use the pdAdmin GUI's 'Import/Export Data' 
-(right-click on each table and import the matched .csv from the root repo's /Resources/ folder)
+(right-click on each table and import the matched .csv from the root repo's 'Resources' folder)
 Import in this order:
 	1 - title
 	2 - employees
@@ -12,6 +12,8 @@ Import in this order:
 	4 - dept_emp
 	5 - dept_manager
 	6 - salaries
+
+For nerd cred, check out the alternate version in 'Resources/schema_efficient.sql', which automatically imports the .csv's
 */
 
 -- drop tables (in reverse order, to avoid errors) if they already exist

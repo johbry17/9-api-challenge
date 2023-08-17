@@ -1,3 +1,21 @@
+/*
+Alternate verson of schema that automatically imports data, bypassing the need for the pgAdmin GUI 'Import/Export'
+
+Saves a lot of time
+
+Unfortunately, it relies on a local path
+I tried to use github, 'https://raw.githubusercontent.com/blah/blah'blah.csv', but pgAdmin does not like remote data sources
+If you can figure it out, let me know
+So, to get it to work, I had to create a local path to each .csv
+AND I had to edit permissions on each .csv to allow Everyone access to read each individual file
+Bit of a security risk, but I believe it's acceptable when dealing with 6 .csv's from a fictional company for a school assignment on my personal laptop
+Something to consider in professional settings, though
+
+To use this, one would have to save all six .csv's locally, 
+edit each of the six below 'Local\Path\Resources\blah.csv' in COPY FROM, 
+and grant permissions to each csv
+*/
+
 -- drop tables (in reverse order, to avoid errors) if they already exist
 DROP TABLE IF EXISTS salaries;
 DROP TABLE IF EXISTS dept_manager;
@@ -12,7 +30,7 @@ CREATE TABLE title (
     title varchar NOT NULL
 );
 COPY title (title_id, title)
-FROM 'C:\Users\johbr\Data-Analyst\Projects\9-sql-challenge\Resources\titles.csv'
+FROM 'Local\Path\Resources\titles.csv'
 DELIMITER ','
 CSV HEADER;
 
@@ -27,7 +45,7 @@ CREATE TABLE employees (
     hire_date timestamp NOT NULL
 );
 COPY employees (emp_no, emp_title_id, birth_date, first_name, last_name, sex, hire_date)
-FROM 'C:\Users\johbr\Data-Analyst\Projects\9-sql-challenge\Resources\employees.csv'
+FROM 'Local\Path\Resources\employees.csv'
 DELIMITER ','
 CSV HEADER;
 
@@ -37,7 +55,7 @@ CREATE TABLE departments (
     dept_name varchar NOT NULL
 );
 COPY departments (dept_no, dept_name)
-FROM 'C:\Users\johbr\Data-Analyst\Projects\9-sql-challenge\Resources\departments.csv'
+FROM 'Local\Path\Resources\departments.csv'
 DELIMITER ','
 CSV HEADER;
 
@@ -49,7 +67,7 @@ CREATE TABLE dept_emp (
 	PRIMARY KEY (emp_no,dept_no)
 );
 COPY dept_emp (emp_no, dept_no)
-FROM 'C:\Users\johbr\Data-Analyst\Projects\9-sql-challenge\Resources\dept_emp.csv'
+FROM 'Local\Path\Resources\dept_emp.csv'
 DELIMITER ','
 CSV HEADER;
 
@@ -59,7 +77,7 @@ CREATE TABLE dept_manager (
     emp_no integer PRIMARY KEY REFERENCES employees (emp_no)
 );
 COPY dept_manager (dept_no, emp_no)
-FROM 'C:\Users\johbr\Data-Analyst\Projects\9-sql-challenge\Resources\dept_manager.csv'
+FROM 'Local\Path\Resources\dept_manager.csv'
 DELIMITER ','
 CSV HEADER;
 
@@ -69,7 +87,7 @@ CREATE TABLE salaries (
     salary numeric NOT NULL
 );
 COPY salaries (emp_no, salary)
-FROM 'C:\Users\johbr\Data-Analyst\Projects\9-sql-challenge\Resources\salaries.csv'
+FROM 'Local\Path\Resources\salaries.csv'
 DELIMITER ','
 CSV HEADER;
 
