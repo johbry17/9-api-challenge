@@ -78,7 +78,3 @@ SELECT
 FROM employees
 GROUP BY last_name
 ORDER BY amount DESC;
-
--- Bonus, deleted from this challenge, but my tutor tipped me off
-SELECT * FROM employees
-WHERE first_name = 'April';

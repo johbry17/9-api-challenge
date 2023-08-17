@@ -1,5 +1,6 @@
 # hide config.py
 config.py
+schema_efficient_local_path_git_ignored.sql
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

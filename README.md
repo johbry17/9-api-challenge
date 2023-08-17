@@ -12,7 +12,7 @@ A jupyter notebook, 'analysis.ipynb', contains all of the queries. Some are limi
 
 ## Usage
 
-Results can be viewed in the jupyter notebook 'analysis.ipynb'. Individual queries can be run from 'queries_for_analysis.sql'. Tables can be recreated using 'create_tables_schema.sql'.
+Results can be viewed in the jupyter notebook 'analysis.ipynb'. Individual queries can be run from 'queries_for_analysis.sql'. Tables can be recreated using 'schema.sql'.
 
 ## Gallery of Significant Results:
 

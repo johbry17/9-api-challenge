@@ -46,7 +46,7 @@ CSV HEADER;
 CREATE TABLE dept_emp (
     emp_no integer NOT NULL REFERENCES employees (emp_no),
     dept_no varchar NOT NULL REFERENCES departments (dept_no),
-	CONSTRAINT pk_dept_emp PRIMARY KEY (emp_no,dept_no)
+	PRIMARY KEY (emp_no,dept_no)
 );
 COPY dept_emp (emp_no, dept_no)
 FROM 'C:\Users\johbr\Data-Analyst\Projects\9-sql-challenge\Resources\dept_emp.csv'
